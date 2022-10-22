@@ -2,5 +2,13 @@
     background-color: #ff111328;
     height: 130px;
     border-radius: 20px;
+    color: white;
 }
 
+.size-sex{
+    font-size: 40px;
+}
+
+.top{
+    margin-top: -20px;
+}
