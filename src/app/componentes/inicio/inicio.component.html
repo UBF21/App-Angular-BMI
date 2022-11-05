@@ -2,14 +2,14 @@
     <div class="row mt-4">
         <div class="col-lg-4 offset-lg-4">
 
-            <h2 class="mt-5">BMI CALCULATOR</h2>
+            <h2 class="mt-5 fw-bold">BMI CALCULATOR</h2>
 
             <div class="row mt-4 g-3">
 
                 <div class="col-lg-6 hvr-grow">
                     <div class="font-item">
 
-                        <div class="d-flex flex-column align-items-center justify-content-center h-100">
+                        <div class="d-flex flex-column align-items-center justify-content-center h-100 pointer" (click)="masculino()" [ngClass]="{'sexoDesactivado' : sexo === 'Masculino'}">
 
                             <i class="fas fa-mars size-sex"></i>
                             <p class="fs-5">Masculino</p>
@@ -19,8 +19,9 @@
                 </div>
                 <div class="col-lg-6 hvr-grow">
                     <div class="font-item">
-
-                        <div class="d-flex flex-column align-items-center justify-content-center h-100">
+                        
+                        <div class="d-flex flex-column align-items-center justify-content-center h-100 pointer"
+                            (click)="femenino()" [ngClass]="{'sexoDesactivado' : sexo === 'Femenino'}">
                             <i class="fas fa-venus size-sex"></i>
                             <p class="fs-5">Femenino</p>
                         </div>
@@ -29,21 +30,41 @@
                 </div>
                 <div class="col-lg-12 hvr-grow">
                     <div class="font-item">
-                        <div class="d-flex flex-column align-items-center justify-content-center h-100">
+                        <div class="d-flex flex-column align-items-center justify-content-center h-100 pointer">
                             <p class="fs-3 top">Altura</p>
-                            <h3 class="fw-bold fs-4 top">170<span class="fw-normal">cm</span></h3>
-                            <input type="range" class="form-range pe-2 ps-2">
+                            <h3 class="fw-bold fs-4 top">{{altura}}<span class="fw-normal">cm</span></h3>
+                            <input type="range" [value]="altura" (input)="cambiarAltura($event)" min="120" max="220"
+                                class="form-range pe-2 ps-2">
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 hvr-grow">
                     <div class="font-item">
-                        a
+                        <div class="d-flex flex-column align-items-center justify-content-center h-100">
+
+                            <p>Peso</p>
+                            <h3 class="fw-bold fs-4 top">{{peso}}</h3>
+                            <div class="column">
+                                <span class="margin-left" (click)="restarPeso()"> <i
+                                        class="fas fa-minus icon-calculator"></i></span>
+                                <span (click)="sumarPeso()"><i class="fas fa-plus icon-calculator"></i></span>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <div class="col-lg-6 hvr-grow">
                     <div class="font-item">
-                        a
+                        <div class="d-flex flex-column align-items-center justify-content-center h-100">
+
+                            <p>Edad</p>
+                            <h3 class="fw-bold fs-4 top">{{edad}}</h3>
+                            <div class=" column ">
+                                <span class="margin-left" (click)="restarEdad()"><i
+                                        class="fas fa-minus icon-calculator"></i></span>
+                                <span class="" (click)="sumarEdad()"><i class="fas fa-plus icon-calculator"></i></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -51,11 +72,11 @@
 
             <div class="row mt-4 g-1">
                 <div class="col-lg-12">
-                    <button class="btn btn-primary btn-lg btn-color hvr-pulse-grow">Calcular</button>
+                    <button (click)="calcularBMI()" class="btn btn-primary btn-lg btn-color hvr-pulse-grow">Calcular</button>
                 </div>
             </div>
 
         </div>
-    </div>
 
+    </div>
 </div>
